@@ -45,8 +45,9 @@ public class ArrayList<T> {
 
     public void display(){
         for (T elem: list) {
-            System.out.println(elem + " ");
+            System.out.print(elem + " ");
         }
+        System.out.println();
     }
 
     public int index(T element){
@@ -55,6 +56,28 @@ public class ArrayList<T> {
             if(element.equals(list[i])) return i;
         }
         return -1;
+    }
+
+    public T get(int index){
+        return  list[index];
+    }
+
+    public void set(int index, T item) {
+        list[index] = item;
+    }
+
+    public boolean isEmpty(){
+        if(size == 0){
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean isFull(){
+        if(size == DEFAULT_CAPACITY){
+            return true;
+        }
+        else return false;
     }
 
 }
