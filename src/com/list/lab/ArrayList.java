@@ -16,9 +16,24 @@ public class ArrayList<T> {
         list = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
-    public void add(T item){
-        // check for full List
-        list[size++] = item;
+    public int getSize() {
+        return size;
+    }
+
+    public void add(T element){
+        if(size == list.length){
+            size++;
+            T[] tmp = list;
+            list = (T[]) new Object[size+2];
+            for(int i = 0; i < tmp.length; i++){
+                list[i] = tmp[i];
+            }
+            list[size] = element;
+        }
+        else{
+            list[size++] = element;
+        }
+
     }
 
     public void add(int index, T element){
@@ -45,7 +60,7 @@ public class ArrayList<T> {
 
     public void display(){
         for (T elem: list) {
-            System.out.print(elem + " ");
+            System.out.print(elem + ", ");
         }
         System.out.println();
     }
@@ -59,7 +74,10 @@ public class ArrayList<T> {
     }
 
     public T get(int index){
-        return  list[index];
+        if(index <= DEFAULT_CAPACITY){
+            return  list[index];
+        }
+        else return null;
     }
 
     public void set(int index, T item) {
@@ -74,7 +92,7 @@ public class ArrayList<T> {
     }
 
     public boolean isFull(){
-        if(size == DEFAULT_CAPACITY){
+        if(size == list.length){
             return true;
         }
         else return false;
