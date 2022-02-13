@@ -3,7 +3,7 @@ package com.list.lab;
 public class ArrayList<T> {
     private T[] list;
     private int size;
-    private final int DEFAULT_CAPACITY = 10;
+    private final int DEFAULT_CAPACITY = 2;
 
     public ArrayList(int capacity){
         if(capacity <= 0){
@@ -58,8 +58,8 @@ public class ArrayList<T> {
     }
 
     public void display(){
-        for (T elem: list) {
-            System.out.print(elem + ", ");
+        for (int i = 0; i < list.length-1; i++) {
+            System.out.print(list[i] + ", ");
         }
         System.out.println();
     }
@@ -91,7 +91,7 @@ public class ArrayList<T> {
     }
 
     public boolean isFull(){
-        if(size == list.length){
+        if(size+1 == list.length){
             return true;
         }
         else return false;
