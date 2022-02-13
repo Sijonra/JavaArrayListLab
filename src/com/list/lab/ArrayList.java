@@ -22,13 +22,12 @@ public class ArrayList<T> {
 
     public void add(T element){
         if(size == list.length){
-            size++;
             T[] tmp = list;
             list = (T[]) new Object[size+2];
             for(int i = 0; i < tmp.length; i++){
                 list[i] = tmp[i];
             }
-            list[size] = element;
+            list[size++] = element;
         }
         else{
             list[size++] = element;
