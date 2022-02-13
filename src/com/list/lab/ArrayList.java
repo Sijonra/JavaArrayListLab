@@ -29,10 +29,18 @@ public class ArrayList<T> {
         size++;
     }
 
-    public void delete(int index){
+    public void deleteByIndex(int index){
         for (int i = index; i < size; i++){
             list[i] = list[i+1];
         }
+    }
+
+    public void deleteByValue(T element){
+        int pos = index(element);
+        if(pos < 0){
+            return;
+        }
+        deleteByIndex(pos);
     }
 
     public void display(){
@@ -41,8 +49,12 @@ public class ArrayList<T> {
         }
     }
 
-    public void alert(String str){
-        System.out.println(str);
+    public int index(T element){
+        if (element == null) return -1;
+        for(int i = 0; i < size; i++){
+            if(element.equals(list[i])) return i;
+        }
+        return -1;
     }
 
 }
